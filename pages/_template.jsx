@@ -1,18 +1,20 @@
 import React, { Component, PropTypes } from 'react'
 
-import { Link } from 'react-router'
+import { withRouter, Link } from 'react-router'
 
 import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 import { prefixLink } from 'gatsby-helpers'
 import { config } from 'config'
+import { getRouteNode } from 'utils/functions'
 
 import 'css/style.css'
 import 'css/main.css'
 
 class RootTemplate extends Component {
   render () {
-    const { location: { pathname }, children } = this.props
+    const { route, location: { pathname }, children } = this.props
 
+    console.log(route)
     return (
       <div>
         <header>
@@ -23,9 +25,9 @@ class RootTemplate extends Component {
               </Navbar.Brand>
             </Navbar.Header>
             <ul role='navigation' className='nav navbar-nav'>
-              {config.rootDirs.map((it, index) => (
+              {route.childRoutes.map((it, index) => (
                 <li key={index} className={pathname.includes(it.path) ? 'active' : ''}>
-                  <Link to={prefixLink(it.path)}>{it.title}</Link>
+                  <Link to={it.path}>{getRouteNode(it.path, route.path)}</Link>
                 </li>
               ))}
             </ul>
@@ -49,4 +51,4 @@ RootTemplate.propTypes = {
   children: PropTypes.object
 }
 
-export default RootTemplate
+export default withRouter(RootTemplate)

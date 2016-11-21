@@ -6,8 +6,6 @@ import { prefixLink } from 'gatsby-helpers'
 
 class IndexPage extends Component {
   render () {
-    const { route } = this.props
-    console.log(route)
     return (
       <div>
         Home Page
