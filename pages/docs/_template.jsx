@@ -21,7 +21,7 @@ class DocsTemplate extends Component {
             <ul className='nav nav-docs'>
               {route.childRoutes.map((it, index) => (
                 <li key={index}>
-                  <Link to={prefixLink(it.path)}>{it.page.data.title}</Link>
+                  <Link to={it.path}>{it.page.data.title}</Link>
                 </li>
               ))}
             </ul>
