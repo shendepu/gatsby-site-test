@@ -1,0 +1,19 @@
+{
+  "name": "gatsby-site-boilerplate",
+  "version": "0.0.1",
+  "description": "Boilerplate of gatsby generated site",
+  "author": "Jimmy Shen <shendepu@hotmail.com>",
+  "main": "n/a",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "gatsby": "^0.12.19",
+    "react-bootstrap": "^0.30.6",
+    "react-helmet": "^3.2.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.12.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

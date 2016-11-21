@@ -1,0 +1,6 @@
+siteTitle="Gatsby Site Boilerplate"
+baseColor = "#484848"
+linkPrefix = "/gatsby-site-test"
+rootDirs = [
+  { path = "/docs/", title = "Docs" }
+]
