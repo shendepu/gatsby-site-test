@@ -16,7 +16,7 @@ class RootTemplate extends Component {
     const { route, location: { pathname }, children } = this.props
 
     let title
-    const page = getMatchedPage(location.pathname, route.path, route.indexRoute, route.childRoutes)
+    const page = getMatchedPage(pathname, route.path, route.indexRoute, route.childRoutes)
     if (page && page.data && page.data.title) title = page.data.title
     title = (title ? title + ' | ' : '') + config.siteTitle
 
