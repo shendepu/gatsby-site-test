@@ -9,7 +9,6 @@ class DocsTemplate extends Component {
 
   render () {
     const { route, children } = this.props
-    console.log(route)
     return (
       <Row>
         <Col md={3}>
