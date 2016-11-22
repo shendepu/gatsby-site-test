@@ -8,18 +8,20 @@ class DocsTemplate extends Component {
   }
 
   render () {
-    const { route, children } = this.props
+    const { route, location: { pathname }, children } = this.props
     return (
       <Row>
         <Col md={3}>
           <div className='bs-docs-sidebar'>
             <ul className='nav nav-docs'>
               {route.indexRoute
-                ? <li key={10000}><Link to={route.indexRoute.page.path}>{route.indexRoute.page.data.title}</Link></li>
+                ? <li key={10000} className={pathname === route.path ? 'active' : ''}>
+                  <Link to={route.path}>{route.indexRoute.page.data.title}</Link>
+                </li>
                 : null
               }
               {route.childRoutes.map((it, index) => (
-                <li key={index}>
+                <li key={index} className={pathname.includes(it.path) ? 'active' : ''}>
                   <Link to={it.path}>{it.page.data.title}</Link>
                 </li>
               ))}
