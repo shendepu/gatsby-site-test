@@ -1,9 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { withRouter, Link } from 'react-router'
-import { NavBar, Row, Col } from 'react-bootstrap'
-
-import { prefixLink } from 'gatsby-helpers'
-import { config } from 'config'
+import { Row, Col } from 'react-bootstrap'
 
 class DocsTemplate extends Component {
   handleTopicChange = (e) => {
@@ -11,14 +8,17 @@ class DocsTemplate extends Component {
   }
 
   render () {
-
-    const { route, router, children } = this.props
+    const { route, children } = this.props
     console.log(route)
     return (
       <Row>
         <Col md={3}>
           <div className='bs-docs-sidebar'>
             <ul className='nav nav-docs'>
+              {route.indexRoute
+                ? <li key={10000}><Link to={route.indexRoute.page.path}>{route.indexRoute.page.data.title}</Link></li>
+                : null
+              }
               {route.childRoutes.map((it, index) => (
                 <li key={index}>
                   <Link to={it.path}>{it.page.data.title}</Link>
@@ -26,10 +26,7 @@ class DocsTemplate extends Component {
               ))}
             </ul>
           </div>
-
         </Col>
-
-
         <Col md={9}>
           {children}
         </Col>
@@ -41,7 +38,8 @@ class DocsTemplate extends Component {
 DocsTemplate.propTypes = {
   route: PropTypes.object,
   location: PropTypes.object,
-  router: PropTypes.object
+  router: PropTypes.object,
+  children: PropTypes.object
 }
 
 export default withRouter(DocsTemplate)
